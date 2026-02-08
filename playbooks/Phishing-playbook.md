@@ -9,8 +9,6 @@ Use this when a suspicious email is reported or flagged. Aim is to (1) confirm w
 - Multiple users report the same message
 - Spike in MFA prompts / risky sign-ins linked to the same timeframe
 
----
-
 ## 0) Quick gate: severity + escalation
 
 ### Severity (quick guide)
@@ -29,16 +27,12 @@ Use this when a suspicious email is reported or flagged. Aim is to (1) confirm w
 
 **If escalated:** record who/when, then continue containment steps in parallel where allowed.
 
----
-
 ## 1) Immediate actions (target: 0–15 minutes)
 - [ ] Confirm user actions: opened / clicked / attachment / credentials / replied
 - [ ] Capture basics: sender, subject, receive time, user mailbox, Message-ID
 - [ ] Preserve evidence: save `.eml` or copy full headers (whatever your process allows)
 - [ ] Check if this is already a known campaign (similar reports, same subject/sender/URL)
 - [ ] Set initial severity and note rationale
-
----
 
 ## 2) Containment (target: 15–60 minutes)
 
@@ -60,8 +54,6 @@ Only if attachment opened/executed or malware suspected:
 - [ ] Run EDR scan and review alerts
 - [ ] Isolate host (per policy/approval)
 - [ ] Collect triage package/logs (per policy)
-
----
 
 ## 3) Investigation
 
@@ -90,7 +82,7 @@ Goal: decide “what is it?” and “who is at risk?” quickly.
 - [ ] Any VIPs / sensitive teams
 - [ ] Any evidence of interaction (user statement + logs if available)
 
-### 3.2 Deeper investigation (target: 1–4 hours+ as needed)
+## 3.2 Deeper investigation (target: 1–4 hours+ as needed)
 Use this if escalation triggers are hit, multiple users are impacted, BEC risk exists, or interaction occurred.
 
 **Mailbox / M365**
@@ -107,8 +99,7 @@ Use this if escalation triggers are hit, multiple users are impacted, BEC risk e
 - [ ] Process tree, persistence, suspicious network connections
 - [ ] Downloads created / unusual executables
 - [ ] Other hosts showing similar IOCs
-
----
+      
 
 ## 4) Eradication (target: 2–8 hours)
 - [ ] Remove malicious rules/forwarding/delegates
@@ -117,16 +108,12 @@ Use this if escalation triggers are hit, multiple users are impacted, BEC risk e
 - [ ] Ensure compromised credentials are reset and sessions revoked
 - [ ] If malware confirmed: follow endpoint eradication procedure (L2/IR as required)
 
----
-
 ## 5) Recovery (target: 4–24 hours)
 - [ ] Validate user access restored with known-good credentials
 - [ ] MFA re-enrolled/re-verified if required
 - [ ] Mailbox settings verified (rules/forwarding/delegates clean)
 - [ ] Confirm no further suspicious sign-ins post-remediation
 - [ ] Monitor affected accounts/hosts for 24–72 hours (per policy)
-
----
 
 ## 6) Post-incident (target: 1–7 days)
 - [ ] Incident report completed (what, impact, actions, outcome)
@@ -136,8 +123,6 @@ Use this if escalation triggers are hit, multiple users are impacted, BEC risk e
 - [ ] User comms/awareness notes logged
 - [ ] Ticket closed with evidence references
 
----
-
 ## Evidence checklist (minimum)
 - [ ] `.eml` saved OR full headers captured
 - [ ] Message-ID recorded
@@ -146,13 +131,3 @@ Use this if escalation triggers are hit, multiple users are impacted, BEC risk e
 - [ ] SPF/DKIM/DMARC recorded
 - [ ] User interaction summary + timestamps recorded
 - [ ] Actions taken recorded (purge/block/reset/revoke/isolate)
-
----
-
-## Investigation queries / examples (adapt to your environment)
-
-### Microsoft 365 / Exchange Online (examples)
-
-**Unified Audit Log (user activity)**
-```powershell
-Search-UnifiedAuditLog -StartDate (Get-Date).AddDays(-7) -EndDate (Get-Date) -UserIds user@domain.com
