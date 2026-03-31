@@ -83,15 +83,19 @@ Based on .bash_history, the working directory at the time of activity was: /root
 
 <img width="600" height="800" alt="Q11 Answer" src="https://github.com/user-attachments/assets/43e3d97d-7f42-41be-a551-5eee092e2158" />
 
-Timeline of artefacts:
-1. System running Kali Linux identified
-2. Credential dumping tool (Mimikatz) downloaded
-3. User navigated and operated within /root/Documents/myfirsthack/
-4. Suspicious image analysed using binwalk
+
+Investigation Summary:
+This investigation analysed a Linux disk imaged associated with a suspected insider threat involving a user identified as Karen at TAAUSAI. The objective was to identify evidence of malicious activity, reconstruct user actions, and determine whether the system was used for unauthorised operations.
+
+Timeline of Activity:
+1. System identified as Kali Linux
+2. User operated within /root/Documents/myfirsthack/
+3. mimikatz_trunk.zip downloaded to system
+4. Image file analysed using binwalk
 5. File /root/Desktop/SuperSecretFile.txt created
-6. Bash script used to taunt user "young"
-7. Multiple privilege escalation attempts using "su"
-8. Evidence suggests system used to support external attack activity
+6. Script created targeting user "young"
+7. Multiple "su" executions by user "postgres"
+8. Evidence suggest system used in external attack activity
 
 Conclusion:
 The investigation identified clear indicators of malicious insider activity conducted by the user Karen.
@@ -103,4 +107,12 @@ Repeated privilege escalation attempts
 Indicators of external activity
 Additionally, artefacts such as the checklist and taunting script suggest intent and motivation, including financial gain aspects.
 
-Overall, the findings strongly support the conclusion that the system was used for unauthorised and potentially malicious activities.
+Overall, based on the evidence identified the indicators of malicious insider activity, strongly support the conclusion that the system was used for unauthorised and potentially malicious activities. The user conducted actions consistent with credential harvesting, privilege escalation, and potential external attack execution.
+
+Recommendations:
+Reset all credentials potentially exposed by credential dumping activity
+Review authentication logs across the environment for lateral movement
+Monitor for use of tools such as Mimikatz and binwalk
+Restrict and audit privileged account usage
+Implement endpoint detection rules aligned to credential access techniques
+
