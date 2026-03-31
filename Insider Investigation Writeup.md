@@ -55,7 +55,7 @@ A checklist file located on the Desktop contained multiple goals, with the third
 This suggests financial motivation behind the activities conducted on the system.
 
 Q7: How many times was Apache run?
-The Apache access log file was found to be empty (0 bytes) refering from earlier, indicating that Apache has not been executed on the system.
+The Apache access log file was found to be empty (0 bytes) refering from earlier, indicating there is no evidence of Apache activity on the system.
 
 <img width="600" height="800" alt="Q7 Answer" src="https://github.com/user-attachments/assets/cf6aa702-2a92-4d7b-8ece-d583c507be2e" />
 
